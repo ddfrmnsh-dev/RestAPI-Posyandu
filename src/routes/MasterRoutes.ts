@@ -13,10 +13,5 @@ export default function (app:Express) {
 
    app.route("/imunisasi")
          .post(MasterController.insertImunisasi)
-         .get(MasterController.getImunisasi)
-
-   app.route("/imunisasi/:id")
-         .put(MasterController.updateImunisasi)
-         .delete(MasterController.deleteImunisasi)
 
 }
