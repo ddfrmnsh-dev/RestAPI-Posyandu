@@ -8,7 +8,16 @@ const config = {
         title: 'Blog API Documentation',
         description: '',
     },
-    tags: [ ],
+    tags: [
+        {
+        "name": "Petugas",
+        "description": ""
+        },
+        {
+        "name": "Imunisasi",
+        "description": ""
+        } 
+    ],
     host: 'localhost:3000/api',
     schemes: ['http', 'https'],
 };

@@ -11,9 +11,22 @@
     "http",
     "https"
   ],
+  "tags": [
+    {
+      "name": "Petugas",
+      "description": ""
+    },
+    {
+      "name": "Imunisasi",
+      "description": ""
+    }
+  ],
   "paths": {
     "/petugas": {
       "get": {
+        "tags": [
+          "Petugas"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -22,6 +35,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Petugas"
+        ],
         "description": "",
         "parameters": [
           {
@@ -58,6 +74,9 @@
     },
     "/petugas/{id}": {
       "put": {
+        "tags": [
+          "Petugas"
+        ],
         "description": "",
         "parameters": [
           {
@@ -77,6 +96,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Petugas"
+        ],
         "description": "",
         "parameters": [
           {
@@ -98,6 +120,9 @@
     },
     "/imunisasi": {
       "post": {
+        "tags": [
+          "Imunisasi"
+        ],
         "description": "",
         "parameters": [
           {
