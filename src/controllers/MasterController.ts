@@ -101,7 +101,22 @@ async function insertImunisasi(req:Request, res: Response, next: NextFunction): 
 
 async function getImunisasi(req: Request, res: Response, next: NextFunction) {
     try {
-        const data = await prisma.imunisasi.findMany()
+        let sortMode = req.query.sortMode
+        let sortBy = req.query.sortBy
+
+        if(sortBy === 'jenisImun'){
+            sortBy = 'jenis_imunisasi'
+        } else {
+            sortBy = 'createdAt'
+        }
+        
+        let orderBy = {}
+
+        orderBy[`${sortBy}`] = sortMode
+
+        const data = await prisma.imunisasi.findMany({
+            orderBy
+        })
 
         res.status(200).json(data)
     } catch (e) {

@@ -8,10 +8,12 @@ const bodyParser = require("body-parser")
 const app = express();
 const port = process.env.PORT
 const prisma = new PrismaClient()
+const cors = require('cors')
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(express.json());
+app.use(cors())
 
 MasterRoutes(app)
 
