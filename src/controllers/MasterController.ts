@@ -101,6 +101,66 @@ async function insertImunisasi(req:Request, res: Response, next: NextFunction): 
     }
 }
 
+async function getImunisasi(req: Request, res: Response, next: NextFunction) {
+    try {
+        let sortMode = req.query.sortMode
+        let sortBy = req.query.sortBy
+
+        if(sortBy === 'jenisImun'){
+            sortBy = 'jenis_imunisasi'
+        } else {
+            sortBy = 'createdAt'
+        }
+        
+        let orderBy = {}
+
+        orderBy[`${sortBy}`] = sortMode
+
+        const data = await prisma.imunisasi.findMany({
+            orderBy
+        })
+
+        res.status(200).json(data)
+    } catch (e) {
+        next(e)
+        console.log("Error", e)
+        res.send(e)
+    }
+    
+}
+
+async function updateImunisasi(req: Request, res: Response, next:NextFunction) {
+    try {
+        const {id} = req.params
+
+        const data = await prisma.imunisasi.update({
+            where: {id: Number (id)},
+            data: {...req.body}
+        })
+
+        res.status(200).json({
+            message : `Succes update data id :${data.id} `
+        })
+    } catch (e) {
+        
+    }
+}
+
+async function deleteImunisasi(req: Request, res: Response, next: NextFunction) {
+    try {
+        const {id} = req.params
+
+        const data = await prisma.imunisasi.delete({
+            where: {id: Number(id)}
+        })
+
+        res.status(200).json({
+            message: `Succes delete data id : ${data.id}`
+        })
+    } catch (e) {
+        
+    }
+}
 export default { 
     getPetugas, 
     insertPetugas,
