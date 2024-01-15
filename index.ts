@@ -18,8 +18,8 @@ app.use(express.json());
 app.use(cors())
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-MasterRoutes(app)
-
+// MasterRoutes(app, '/api')
+app.use('/api', MasterRoutes)
 app.use((req: Request, res: Response, next: Function)=>{
     next(createHttpError(404))
 })
